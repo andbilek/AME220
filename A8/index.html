@@ -1,0 +1,98 @@
+<html>
+<head>
+<title>
+  Image Resizer
+</title>
+<style>
+  #imagePreview{
+      display: block;
+  }
+</style>
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+    crossorigin="anonymous"></script>
+
+<script>
+var MAX_WIDTH = 500;
+var MAX_HEIGHT = 500;
+var CAN_WIDTH = 3000;
+var CAN_HEIGHT = 3000;
+var imageUploaded = function()
+{
+   var file = $('#uploadImage').get(0);
+   if(file.files[0].type.split("/")[0].toLowerCase() != "image"){
+        alert("Incorrect file type -- Please ensure you are uploading an image file.");
+        return;
+   }
+   MAX_WIDTH = parseFloat(document.getElementById("iWidth").value);
+   MAX_HEIGHT = parseFloat(document.getElementById("iHeight").value);
+   
+   if ( file.files && file.files[0] && file.files[0].type.split("/")[0].toLowerCase() === "image") {
+        var FR = new FileReader();
+        FR.onload = function(e) {
+            var data = e.target.result;
+            var canvas = document.createElement("canvas");
+            var img = document.createElement("img");
+            img.onload= function(){
+                 var width = img.width;
+                 var height = img.height;
+                 var w2 = MAX_WIDTH;
+                 var h2 = MAX_HEIGHT;
+                 if (width > height) {
+                     if (width > MAX_WIDTH) {
+                        w2 = MAX_WIDTH;
+                        h2 = height * MAX_WIDTH / width;
+                    }
+                 } else {
+                     if (height > MAX_HEIGHT) {
+                        h2 = MAX_HEIGHT;
+                        w2 = width * MAX_HEIGHT / height;
+                    }
+                }
+                canvas.width = CAN_WIDTH;
+                canvas.height = CAN_HEIGHT;
+                
+                var w3 = w2 + 10
+                var h3 = h2 + 10
+                
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(img, 1200, 0, 29, 29);
+                ctx.drawImage(img, 1200, 39, 40, 40);
+                ctx.drawImage(img, 1200, 89, 58, 58);
+                ctx.drawImage(img, 1200, 157, 76, 76);
+                ctx.drawImage(img, 1200, 243, 80, 80);
+                ctx.drawImage(img, 1200, 333, 87, 87);
+                ctx.drawImage(img, 1200, 430, 120, 120);
+                ctx.drawImage(img, 1200, 560, 120, 120);
+                ctx.drawImage(img, 1200, 690, 120, 120);
+                ctx.drawImage(img, 1200, 820, 152, 152);
+                ctx.drawImage(img, 1200, 982, 180, 180);
+                ctx.drawImage(img, 1200, 1172, 512, 512);
+                ctx.drawImage(img, 0, 1200, 1024, 1024);
+                
+                ctx.drawImage(img, 0, 0, w2, h2);
+                var base64St = canvas.toDataURL("image/png");
+                document.getElementById("imagePreview").src = base64St;
+                document.getElementById("imagePreview").style.height = CAN_HEIGHT;
+                document.getElementById("imagePreview").style.width= CAN_WIDTH;
+                
+            }
+            img.src = data;
+        };  
+        FR.readAsDataURL( file.files[0] );
+   }
+}
+</script>
+
+</head>
+
+<body>
+  <input type="file" name="uploadImage" id="uploadImage" onchange="imageUploaded()">
+  <input type="number" placeholder="Height(px)" id="iHeight" value='200'  onchange="imageUploaded()">
+  <input type="number" placeholder="Width(px)" id="iWidth" value='200' onchange="imageUploaded()">
+  <img id="imagePreview">
+</body>
+
+
+</html>
