@@ -40,25 +40,25 @@ var dialogLib = {
       var outS = "";
       outS += "<div class='wrapper'>" +
           "<div class='signup'>" +
-            "<h1>" + msg1 + "</h1>"+
+            "<h2>" + msg1 + "</h2>"+
             "<input onkeydown='dialogLib.confirm._handleKD(event)' type='text' class='userInput'/>"+
           
             "<h2>" + msg2 + "</h2>"+
             "<input onkeydown='dialogLib.confirm._handleKD(event)' type='password' class='userInput'/>"+
             
-            "<h3>" + msg3 + "</h3>"+
+            "<h2>" + msg3 + "</h2>"+
             "<input onkeydown='dialogLib.confirm._handleKD(event)' type='password' class='userInput'/>"+
            
-            "<h4>" + msg4 + "</h4>"+
+            "<h2>" + msg4 + "</h2>"+
             "<input onkeydown='dialogLib.confirm._handleKD(event)' type='text' class='userInput'/>"+
             
-            "<h5>" + msg5 + "</h5>"+ 
+            "<h2>" + msg5 + "</h2>"+ 
             "<input onkeydown='dialogLib.confirm._handleKD(event)' type='text' class='userInput'/>"+
             
-            "<h6>"+
+            "<h2>"+
             "<button onclick='dialogLib.confirm._yesClicked()'>" + yesLabel + "</button>"+
             "<button onclick='dialogLib.confirm._noClicked()'>" + noLabel + "</button>"+
-            "</h6>"
+            "</h2>"
           "</div>"+
         "</div>";
       $("body").append(outS);
@@ -99,14 +99,14 @@ var dialogLib = {
       var outS = "";
       outS += "<div class='wrapper'>" +
           "<div class='frame'>" +
-            "<h1>" + msg1 + "</h1>"+
+            "<h2>" + msg1 + "</h2>"+
             "<input onkeydown='dialogLib.prompt._handleKD(event)' type='text' class='userInput'/>"+
             "<h2>" + msg2 + "</h2>"+
             "<input onkeydown='dialogLib.prompt._handleKD(event)' type='text' class='userInput'/>"+
-            "<h3>" + 
-            "<button onclick='dialogLib.prompt._noClicked()'>" + noLabel + "</button>"+
+            "<h2>" + 
             "<button onclick='dialogLib.prompt._yesClicked()'>" + yesLabel + "</button>"+
-            "</h3>"
+            "<button onclick='dialogLib.prompt._noClicked()'>" + noLabel + "</button>"+
+            "</h2>"
           "</div>"+
         "</div>";
       $("body").append(outS);
