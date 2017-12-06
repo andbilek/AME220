@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src='dialog.js'> </script>
+<link rel="stylesheet" type="text/css" href="dialog.css">
+
+<script>
+var alertClicked = function()
+{
+  dialogLib.alert.show("There is no spoon", "OK, I know", function(){alert("user clicked ok")});
+}
+function confirmClicked()
+{
+  dialogLib.confirm.show("Email", "Password", "Confirm Password", "First Name", "Last Name", "Confirm", "Cancel", function(){alert("Success! Check your email for further instructions")}, function(){alert("Cancelled")});
+}
+function promptClicked()
+{
+  dialogLib.prompt.show("Email", "Password", "Log In", "Forgot Password?", function(data){alert("Welcome " + data)}, function(data){alert("Check your email for instructions!")});
+}
+</script>
+</head>
+
+<body>
+  <button onclick='promptClicked()'> Log In </button>
+  <button onclick='confirmClicked()'> Sign Up </button>
+</body>
+
+
+</html>

@@ -1,0 +1,3 @@
+Code needs a comma separated list as the HASH (#)
+
+e.g: #https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Spotted_Trunkfish.jpg/471px-Spotted_Trunkfish.jpg,https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Longnose_batfish.jpg/631px-Longnose_batfish.jpg,https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Anemone_purple_anemonefish.jpg/360px-Anemone_purple_anemonefish.jpg,https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Chain_moray_eel.jpg/361px-Chain_moray_eel.jpg,https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/Caesio_teres_in_Fiji_by_Nick_Hobgood.jpg/652px-Caesio_teres_in_Fiji_by_Nick_Hobgood.jpg
