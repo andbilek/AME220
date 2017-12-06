@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+<script>   
+  function setTime() {
+    var offset = parseFloat(document.getElementById("DropDownTimezone").value);
+    var dObj = new Date(new Date().getTime() + new Date().getTimezoneOffset() * 60*1000 + offset*60*60*1000);
+    var h = dObj.getHours();
+    var m = dObj.getMinutes();
+    var s = dObj.getSeconds();
+    console.log(h,m,s);
+    
+    if(h > 17) {
+        document.getElementById("clock").className = "nightTime";
+    }
+    else if(h < 6) {
+        document.getElementById("clock").className = "nightTime";
+    }
+    else {
+        document.getElementById("clock").className = "dayTime";
+    }
+      
+    var hAngle = (h-3) * 30 + .5 * m;
+    var mAngle = (m-15) * 6;
+    var sAngle = (s-15) * 6;
+      
+    document.getElementById("hourN").style.transform = "rotate(" + hAngle + "deg) translate(-10px)";
+    document.getElementById("minN").style.transform = "rotate(" + mAngle + "deg) translate(-10px)";
+    document.getElementById("secN").style.transform = "rotate(" + sAngle + "deg) translate(-10px)";
+  } 
+</script>
+    
+<style>
+  #clock{
+    border: 2px solid;
+    height: 300px;
+    width: 300px;
+    border-radius: 300px;
+    margin: auto;
+  }
+
+  .num{
+    position: absolute;
+    margin-top: 142px;
+    margin-left: 148px;
+    font-size: 15px;
+    color: fuchsia;
+  }
+    
+  .needle{
+    position: absolute;
+    height: 2px;
+    margin-top: 150px;
+    margin-left: 150px;
+    transform-origin: 0px;
+  }
+    
+  #secN{
+    width: 150px;
+    background-color:red;
+  }
+    
+  #minN{
+    width: 125px;
+    background-color:blue;
+  }
+    
+  #hourN{
+    width: 100px;
+    background-color:yellow;
+  }
+    
+  #num12{
+    transform: rotate(-90deg) translate(145px)
+  }
+  #num1{
+    transform: rotate(-60deg) translate(145px)
+  }
+  #num2{
+    transform: rotate(-30deg) translate(145px)
+  }
+  #num3{
+    transform: rotate(0deg) translate(145px)
+  }
+  #num4{
+    transform: rotate(30deg) translate(145px)
+  }
+  #num5{
+    transform: rotate(60deg) translate(145px)
+  }
+  #num6{
+    transform: rotate(90deg) translate(145px)
+  }
+  #num7{
+    transform: rotate(120deg) translate(145px)
+  }
+  #num8{
+    transform: rotate(150deg) translate(145px)
+  }
+  #num9{
+    transform: rotate(180deg) translate(145px)
+  }
+  #num10{
+    transform: rotate(210deg) translate(145px)
+  }
+  #num11{
+    transform: rotate(240deg) translate(145px)
+  }
+    
+  .dayTime{
+    background-color: white;
+  }
+    
+  .nightTime{
+    background-color: black;
+  }   
+</style>  
+</head>
+
+<body onload='setInterval("setTime()", 1000)'>
+<select name="DropDownTimezone" id="DropDownTimezone">
+      <option value="-12.0">(GMT -12:00) Eniwetok, Kwajalein</option>
+      <option value="-11.0">(GMT -11:00) Midway Island, Samoa</option>
+      <option value="-10.0">(GMT -10:00) Hawaii</option>
+      <option value="-9.0">(GMT -9:00) Alaska</option>
+      <option value="-8.0">(GMT -8:00) Pacific Time (US &amp; Canada)</option>
+      <option value="-7.0">(GMT -7:00) Mountain Time (US &amp; Canada)</option>
+      <option value="-6.0">(GMT -6:00) Central Time (US &amp; Canada), Mexico City</option>
+      <option value="-5.0">(GMT -5:00) Eastern Time (US &amp; Canada), Bogota, Lima</option>
+      <option value="-4.0">(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz</option>
+      <option value="-3.5">(GMT -3:30) Newfoundland</option>
+      <option value="-3.0">(GMT -3:00) Brazil, Buenos Aires, Georgetown</option>
+      <option value="-2.0">(GMT -2:00) Mid-Atlantic</option>
+      <option value="-1.0">(GMT -1:00 hour) Azores, Cape Verde Islands</option>
+      <option value="0.0">(GMT) Western Europe Time, London, Lisbon, Casablanca</option>
+      <option value="1.0">(GMT +1:00 hour) Brussels, Copenhagen, Madrid, Paris</option>
+      <option value="2.0">(GMT +2:00) Kaliningrad, South Africa</option>
+      <option value="3.0">(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg</option>
+      <option value="3.5">(GMT +3:30) Tehran</option>
+      <option value="4.0">(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi</option>
+      <option value="4.5">(GMT +4:30) Kabul</option>
+      <option value="5.0">(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent</option>
+      <option value="5.5">(GMT +5:30) Bombay, Calcutta, Madras, New Delhi</option>
+      <option value="5.75">(GMT +5:45) Kathmandu</option>
+      <option value="6.0">(GMT +6:00) Almaty, Dhaka, Colombo</option>
+      <option value="7.0">(GMT +7:00) Bangkok, Hanoi, Jakarta</option>
+      <option value="8.0">(GMT +8:00) Beijing, Perth, Singapore, Hong Kong</option>
+      <option value="9.0">(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk</option>
+      <option value="9.5">(GMT +9:30) Adelaide, Darwin</option>
+      <option value="10.0">(GMT +10:00) Eastern Australia, Guam, Vladivostok</option>
+      <option value="11.0">(GMT +11:00) Magadan, Solomon Islands, New Caledonia</option>
+      <option value="12.0">(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka</option>
+</select>
+    
+  <div id="clock">
+    <div class='num' id='num1'> - </div>
+    <div class='num' id='num2'> - </div>
+    <div class='num' id='num3'> - </div>
+    <div class='num' id='num4'> - </div>
+    <div class='num' id='num5'> - </div>
+    <div class='num' id='num6'> - </div>
+    <div class='num' id='num7'> - </div>
+    <div class='num' id='num8'> - </div>
+    <div class='num' id='num9'> - </div>
+    <div class='num' id='num10'> - </div>
+    <div class='num' id='num11'> - </div>
+    <div class='num' id='num12'> - </div>
+    <div class='needle' id='secN'></div>
+    <div class='needle' id='minN'></div>
+    <div class='needle' id='hourN'></div>
+  </div>   
+</body>
+</html>

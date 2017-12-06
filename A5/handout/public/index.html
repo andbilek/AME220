@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<script src="asyncReq.js"> </script>
+<script>
+function start()
+{
+  var url = 'https://rss.itunes.apple.com/api/v1/us/apple-music/hot-tracks/all/10/non-explicit.json';
+  loadFile("./getFeed?url=" + url, function(data){
+    console.log(data);
+    data = JSON.parse(data);
+    var items = data.feed.results;
+    console.log(items);
+    var markup = "";
+    for(var i = 0; i < items.length; i++){
+      markup += "<h1>" + items[i].name + "</h1>"
+      markup += "<h2>" + items[i].artistName + "</h2>"
+      markup += "<img src='" + items[i].artworkUrl100 + "'><br>";
+    }
+    document.getElementById("list").innerHTML = markup;
+  });
+}
+</script>
+</head>
+
+<body onload='start()'>
+<h1> RSS READER</h1>
+
+<div id='list'> </div>
+<div id='selectedItem'> </div>
+
+</body>
+</html>
